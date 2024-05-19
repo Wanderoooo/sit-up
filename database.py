@@ -39,7 +39,7 @@ def get_records():
     print(f"Error: {response.status_code}")
     return []
 
-def add_record(record):
+def add_record_record(record):
     data = {
         "app": app_id,
         "record": {
