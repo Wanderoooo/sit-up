@@ -35,8 +35,13 @@ const TimeChart = ({ height }) => {
                 text: 'Duration',
             },
         },
+        title: {
+            text: 'Duration for Sessions',  // Add your title here
+        }
     }
-    return <Line {...config} />
+    return (
+        <Line title="Duration for Sessions" {...config} />
+    );
 }
 
 export default TimeChart;

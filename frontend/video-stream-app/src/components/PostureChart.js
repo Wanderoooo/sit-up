@@ -35,6 +35,9 @@ const PostureChart = ({ height }) => {
                 text: 'Posture Score',
             },
         },
+        title: {
+            text: 'Posture Score for Sessions',  // Add your title here
+        }
     }
     return <Line {...config} />
 }
