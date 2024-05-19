@@ -1,5 +1,6 @@
 # app.py
 from flask import Flask, Response, render_template, jsonify
+from flask_cors import CORS
 import mediapipe as mp
 import cv2
 import math
@@ -15,6 +16,7 @@ from esp_comm import send_buzz
 from database import get_records, add_record, add_record_record
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type", "Authorization", "Access-Control-Allow-Origin"], "expose_headers": ["X-Custom-Header"], "supports_credentials": True}})
 
 def generate_frames():
     global training_data, labels, start_time, model, current_labels, valid_landmark_state

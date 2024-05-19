@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from '@ant-design/charts';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const PostureChart = ({ height }) => {
     const [data, setData] = useState([]);
@@ -9,7 +10,7 @@ const PostureChart = ({ height }) => {
         axios.get('http://localhost:5000/get_records_data')
             .then(response => {
                 const transformedData = response.data.map(item => ({
-                    dateTime: new Date(`${item.date}T${item.startTime}`),
+                    dateTime: new Date(`${item.startTime}`),
                     value: item.percentage,
                 }));
                 setData(transformedData);

@@ -29,10 +29,10 @@ const VideoStream = () => {
         }, 1000);
         return () => clearInterval(interval);
       }
-    // } else {
-    //   clearInterval(interval);
-    //   setSec(0);
-    // }
+    } else {
+      setSec(0);
+      clearInterval(interval);
+    }
   }
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -48,13 +48,36 @@ const VideoStream = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    if (per == 100) {
+      setPer(0);
+    }
+
     setIsModalOpen(false);
     let i = 0;
+    let complete = false;
+
     const interval = setInterval(() => {
-      setPer(prev => prev + 10);
+      setPer(prev => prev + 5);
       i++;
-      if (i === 5) {
+      if (i === 10) {
         clearInterval(interval);
+        complete = true;
+      }
+
+      if (per === 100) {
+        axios.get('http://localhost:5000/train_model')
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    const pollingInterval = setInterval(() => {
+      if (per <= 50) {
+        axios.get('http://localhost:5000/record_good_posture')
+      } else {
+        axios.get('http://localhost:5000/record_bad_posture')
+      }
+      if (complete) {
+        clearInterval(pollingInterval);
       }
     }, 1000);
   };

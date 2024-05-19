@@ -18,10 +18,10 @@ send_headers = {
 }
 
 def parse_record(record):
-    date = datetime.strptime(record["Date_0"]["value"], "%Y-%m-%d").date()
+    date = datetime.strptime(record["Date_0"]["value"], "%Y-%m-%d")
     modelData = record["Text"]["value"] # some how need to convert this to binary
-    startTime = datetime.strptime(record["Time_1"]["value"], "%H:%M").time()
-    endTime = datetime.strptime(record["Time_2"]["value"], "%H:%M").time()
+    startTime = datetime.strptime(record["Time_1"]["value"], "%H:%M")
+    endTime = datetime.strptime(record["Time_2"]["value"], "%H:%M")
     percentage = float(record["Number_1"]["value"])
     length = float(record["Number_2"]["value"])
 

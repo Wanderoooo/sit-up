@@ -10,7 +10,7 @@ const TimeChart = ({ height }) => {
       axios.get('http://localhost:5000/get_records_data')
         .then(response => {
           const transformedData = response.data.map(item => ({
-            dateTime: new Date(`${item.date}T${item.startTime}`),
+            dateTime: new Date(`${item.startTime}`),
             value: item.length,
           }));
           setData(transformedData);
