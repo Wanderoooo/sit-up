@@ -48,6 +48,10 @@ void setup() {
   Serial.println("Connection established!");  
   Serial.print("IP address:\t");
   Serial.println(WiFi.localIP());         // Send the IP address of the ESP8266 to the computer
+
+  Udp.begin(localUdpPort);
+  Serial.println("UDP listening on port: ");
+  Serial.println(localUdpPort);
 }
 
 void buzz() {
@@ -66,13 +70,14 @@ void loop() {
     int len = Udp.read(incomingPacket, msg_len);
 
     if (len > 0) {
-      bool allEights = true;
+
+      Serial.println(incomingPacket);
 
       if (memcmp(incomingPacket, message, msg_len) == 0) {
         buzz();
       }
     }
-
+    digitalWrite(LED_PIN, LOW);
     Serial.printf("UDP packet contents: %s\n", incomingPacket);
   }
 }
