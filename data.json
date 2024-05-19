@@ -1,0 +1,8 @@
+{'Date_0': {'type': 'DATE', 'value': '2024-05-19'}, 
+    'Text': {'type': 'SINGLE_LINE_TEXT', 'value': '...'}, '$revision': {'type': '__REVISION__', 'value': '1'}, 'Updated_by': {'type': 'MODIFIER', 'value': {'code': 'doctorhanson21@gmail.com', 'name': 'doctorhanson21@gmail.com'}}, 
+    'Time_1': {'type': 'TIME', 'value': '02:09'}, 
+    'Time_2': {'type': 'TIME', 'value': '02:30'}, 'Updated_datetime': {'type': 'UPDATED_TIME', 'value': '2024-05-19T09:09:00Z'}, 'Created_datetime': {'type': 'CREATED_TIME', 'value': '2024-05-19T09:09:00Z'}, 
+    'Number_1': {'type': 'NUMBER', 'value': '0.8'}, '
+    Number_2': {'type': 'NUMBER', 'value': '21'}, 
+    'Record_number': {'type': 'RECORD_NUMBER', 'value': '2'}, 
+    'Created_by': {'type': 'CREATOR', 'value': {'code': 'doctorhanson21@gmail.com', 'name': 'doctorhanson21@gmail.com'}}, '$id': {'type': '__ID__', 'value': '2'}}

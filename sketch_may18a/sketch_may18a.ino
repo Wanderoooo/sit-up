@@ -77,7 +77,7 @@ void loop() {
         buzz();
       }
     }
-
+    digitalWrite(LED_PIN, LOW);
     Serial.printf("UDP packet contents: %s\n", incomingPacket);
   }
 }
