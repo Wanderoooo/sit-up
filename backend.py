@@ -12,9 +12,9 @@ import cv2
 from model import predict, train_random_forest
 from label_process import find_metrics
 from esp_comm import send_buzz
+from database import get_records, add_record, add_record_record
 
 app = Flask(__name__)
-
 
 def generate_frames():
     global training_data, labels, start_time, model, current_labels, valid_landmark_state
@@ -126,7 +126,24 @@ def predict():
 def get_current_state():
     global valid_landmark_state
     return jsonify({"valid_landmark_state": valid_landmark_state})
-    
+
+@app.route('/get_records_data')
+def get_time_chart_data():
+    records = get_records()
+    print(records)
+    return jsonify(records)
+
+@app.route('/add_record')
+def add_record():
+    date = request.args.get('date')
+    model = request.args.get('model')
+    start = request.args.get('start')
+    end = request.args.get('end')
+    percentage = request.args.get('percentage')
+    add_record(date, model, start, end, percentage)
+    return "Record added"
+
+
 @app.route('/')
 def index():
     return render_template('index.html')

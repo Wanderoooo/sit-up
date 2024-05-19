@@ -4,6 +4,7 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import situp from './situp.gif';
 import slouch from './slouch.jpg';
+import axios from 'axios';
 
 const VideoStream = () => {
   const [sessionStat, setSessionStat] = useState('Start Session'); // Initial countdown value
