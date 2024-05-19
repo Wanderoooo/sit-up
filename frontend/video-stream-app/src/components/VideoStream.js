@@ -11,14 +11,27 @@ const VideoStream = () => {
   const [text, setText] = useState('');
   const [sit, setSit] = useState('');
   const [per, setPer] = useState(0);
+  const [sec, setSec] = useState(0);
   const colors1 = ['#E0B0FF', '#BF40BF'];
   const getHoverColors = (colors) =>
     colors.map((color) => new TinyColor(color).lighten(5).toString());
   const getActiveColors = (colors) =>
     colors.map((color) => new TinyColor(color).darken(5).toString());
 
-  const onSessionClick = () => {
+  let interval; // Declare the interval variable outside the if statement
+  const onSessionClick = (v) => {
     setSessionStat(prev => prev === 'Start Session' ? 'End Session' : 'Start Session');
+    if (v === 'Start Session') {
+      if (sec === 0) {
+        interval = setInterval(() => {
+          setSec(prev => prev + 1);
+        }, 1000);
+        return () => clearInterval(interval);
+      }
+    // } else {
+    //   clearInterval(interval);
+    //   setSec(0);
+    // }
   }
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -92,10 +105,10 @@ const VideoStream = () => {
       }}
     >
       <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '10px'}}>
-      <Button type="primary" size="large" onClick={onSessionClick}>
+      <Button type="primary" size="large" onClick={() => onSessionClick(sessionStat)}>
         {sessionStat}
       </Button>
-      <h1>1s</h1>
+      <h1>{`${sec} s`}</h1>
       </div>
     </ConfigProvider>
     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '10px'}}>

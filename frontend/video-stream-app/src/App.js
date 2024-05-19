@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <FrontLanding />
+      <footer></footer>
     </div>
   );
 };
